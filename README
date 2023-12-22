@@ -4,7 +4,7 @@
 #
 # https://community.jenkins.io/t/job-stuck-on-unpacking-global-jdk-tool/11272
 
-JENKINS_WAR_VERSION=2.426.1
+JENKINS_WAR_VERSION=2.426.2
 JENKINS_WAR=jenkins-${JENKINS_WAR_VERSION}.war
 PLUGIN_MANAGER_VERSION=2.12.14
 PLUGIN_MANAGER_JAR=jenkins-plugin-manager-${PLUGIN_MANAGER_VERSION}.jar
