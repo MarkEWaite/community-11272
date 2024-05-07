@@ -6,7 +6,7 @@
 
 JENKINS_WAR_VERSION=2.426.2
 JENKINS_WAR=jenkins-${JENKINS_WAR_VERSION}.war
-PLUGIN_MANAGER_VERSION=2.12.14
+PLUGIN_MANAGER_VERSION=2.13.0
 PLUGIN_MANAGER_JAR=jenkins-plugin-manager-${PLUGIN_MANAGER_VERSION}.jar
 
 if [ ! -f ../$PLUGIN_MANAGER_JAR ]; then
@@ -24,3 +24,21 @@ if [ ! -f ../$JENKINS_WAR ]; then
 fi
 
 JENKINS_HOME=. java -jar ../$JENKINS_WAR
+
+exit 0
+
+Groovy system console that I used to explore the behavior of Jenkins core:
+
+URL archive = new URL("https://cdn.azul.com/zulu/bin/zulu17.46.19-ca-fx-jdk17.0.9-linux_x64.tar.gz")
+println("URL of archive is " + archive)
+
+TaskListener listener = TaskListener.NULL
+
+File jdk17Dir = new File("/tmp/jdk17.0.9")
+println("Java 17 dir is " + jdk17Dir + " and " + (jdk17Dir.exists() ? " exists" : "does not exist"))
+
+FilePath jdk17FilePath = new FilePath(jdk17Dir)
+println("Java 17 FilePath is " + jdk17FilePath + " and " + (jdk17FilePath.exists() ? " exists" : "does not exist"))
+
+boolean result = jdk17FilePath.installIfNecessaryFrom(archive, listener, "Installing JDK 17 into " + jdk17Dir)
+println("Result of installIfNecessaryFrom is " + result)
